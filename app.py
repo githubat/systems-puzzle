@@ -22,11 +22,17 @@ def add_item():
 @app.route("/success")
 def success():
     results = []
+
+    head = '<head> <style> table { font-family: arial, sans-serif; border-collapse: collapse; width: 100%; } \
+            td, th { border: 1px solid #dddddd; text-align: left; padding: 8px; } tr:nth-child(even) { background-color: #dddddd; } </style> </head>'
  
     qry = db_session.query(Items)
     results = qry.all()
 
-    return str(results)
+    ret = '<html>{:s}<body><table>{:s}</table></body></html>'.format( head,
+          ''.join( [ '<tr><th>{:s}</th><th>{:s}</th><th>{:s}</th><th>{:s}</th></tr>'.format(x.name, str(x.quantity), x.description, str(x.date_added) ) for x in results ] ) )
+
+    return str( ret )
   
 
 if __name__ == '__main__':
