@@ -12,4 +12,6 @@
 
 ## 5. Enhenced the output for flaskapp route "/success"
 
+## 6. Added __repr__(self) for class Items
+
 # Thanks much for the oppourtunity to participate this challenge!
